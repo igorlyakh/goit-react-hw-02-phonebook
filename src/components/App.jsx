@@ -10,6 +10,13 @@ export class App extends Component {
   };
 
   onNameSubmit = person => {
+    const checkContact = this.state.contacts.some(
+      contact => contact.name === person.name
+    );
+    if (checkContact) {
+      alert(`${person.name} is already in contacts.`);
+      return;
+    }
     this.setState(prev => {
       return {
         contacts: [...prev.contacts, { ...person, id: nanoid() }],
@@ -38,6 +45,7 @@ export class App extends Component {
     });
     return (
       <>
+        <h1>Phonebook</h1>
         <AddContactForm onNameSubmit={this.onNameSubmit} />
         {contacts.length > 0 && (
           <ContactsList
