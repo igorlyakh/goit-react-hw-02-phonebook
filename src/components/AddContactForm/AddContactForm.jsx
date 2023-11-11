@@ -22,7 +22,6 @@ const validationSchema = Yup.object().shape({
 const AddContactForm = ({ onNameSubmit }) => {
   return (
     <Wrapper>
-      <h1>Sign Up</h1>
       <Formik
         initialValues={{
           name: '',

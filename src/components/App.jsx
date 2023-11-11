@@ -6,6 +6,7 @@ import ContactsList from './ContactsList';
 export class App extends Component {
   state = {
     contacts: [],
+    filter: '',
   };
 
   onNameSubmit = person => {
@@ -24,13 +25,27 @@ export class App extends Component {
     });
   };
 
+  onFilter = value => {
+    this.setState({
+      filter: value,
+    });
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+    const visibleContacts = contacts.filter(item => {
+      return item.name.toLowerCase().includes(filter.toLowerCase());
+    });
     return (
       <>
         <AddContactForm onNameSubmit={this.onNameSubmit} />
         {contacts.length > 0 && (
-          <ContactsList contacts={contacts} onDelete={this.onDelete} />
+          <ContactsList
+            contacts={visibleContacts}
+            onDelete={this.onDelete}
+            contactFilter={filter}
+            onFilter={this.onFilter}
+          />
         )}
       </>
     );
