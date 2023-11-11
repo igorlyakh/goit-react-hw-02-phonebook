@@ -47,7 +47,7 @@ const AddContactForm = ({ onNameSubmit }) => {
             <ErrorMessage name="phone" component="span" />
           </Label>
 
-          <button type="submit">Submit</button>
+          <button type="submit">Add contact</button>
         </Form>
       </Formik>
     </Wrapper>

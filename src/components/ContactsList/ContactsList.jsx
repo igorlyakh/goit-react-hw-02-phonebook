@@ -1,16 +1,24 @@
 import ListElement from 'components/ListElement';
 import React from 'react';
-import { Wrapper } from './ContactsList.styled';
+import { List, Wrapper } from './ContactsList.styled';
 
-const ContactsList = ({ contacts }) => {
+const ContactsList = ({ contacts, onDelete }) => {
   return (
     <Wrapper>
       <h2>Contacts</h2>
-      <ul>
+      <List>
         {contacts.map(contact => {
-          return <ListElement name={contact.name} phone={contact.phone} />;
+          return (
+            <ListElement
+              name={contact.name}
+              phone={contact.phone}
+              id={contact.id}
+              onDelete={onDelete}
+              key={contact.id}
+            />
+          );
         })}
-      </ul>
+      </List>
     </Wrapper>
   );
 };

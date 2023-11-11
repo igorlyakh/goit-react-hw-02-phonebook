@@ -16,12 +16,23 @@ export class App extends Component {
     });
   };
 
+  onDelete = id => {
+    console.log(id);
+    this.setState(prev => {
+      return {
+        contacts: prev.contacts.filter(contact => contact.id !== id),
+      };
+    });
+  };
+
   render() {
     const { contacts } = this.state;
     return (
       <>
         <AddContactForm onNameSubmit={this.onNameSubmit} />
-        <ContactsList contacts={contacts} />
+        {contacts.length > 0 && (
+          <ContactsList contacts={contacts} onDelete={this.onDelete} />
+        )}
       </>
     );
   }
