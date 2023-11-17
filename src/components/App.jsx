@@ -38,11 +38,17 @@ export class App extends Component {
     });
   };
 
+  getFilteredContacts = () => {
+    return this.state.contacts.filter(contact => {
+      return contact.name
+        .toLowerCase()
+        .includes(this.state.filter.toLowerCase());
+    });
+  };
+
   render() {
     const { contacts, filter } = this.state;
-    const visibleContacts = contacts.filter(item => {
-      return item.name.toLowerCase().includes(filter.toLowerCase());
-    });
+    const visibleContacts = this.getFilteredContacts();
     return (
       <>
         <h1>Phonebook</h1>
