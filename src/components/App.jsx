@@ -12,7 +12,7 @@ export class App extends Component {
 
   onNameSubmit = person => {
     const checkContact = this.state.contacts.some(
-      contact => contact.name === person.name
+      contact => contact.name.toLowerCase() === person.name.toLowerCase()
     );
     if (checkContact) {
       alert(`${person.name} is already in contacts.`);
