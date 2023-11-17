@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import AddContactForm from './AddContactForm';
 import ContactsList from './ContactsList';
+import FilterField from './FilterField';
 
 export class App extends Component {
   state = {
@@ -53,13 +54,9 @@ export class App extends Component {
       <>
         <h1>Phonebook</h1>
         <AddContactForm onNameSubmit={this.onNameSubmit} />
+        <FilterField contactFilter={filter} onFilter={this.onFilter} />
         {contacts.length > 0 && (
-          <ContactsList
-            contacts={visibleContacts}
-            onDelete={this.onDelete}
-            contactFilter={filter}
-            onFilter={this.onFilter}
-          />
+          <ContactsList contacts={visibleContacts} onDelete={this.onDelete} />
         )}
       </>
     );

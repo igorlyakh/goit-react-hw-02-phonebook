@@ -1,8 +1,9 @@
 import React from 'react';
+import { Wrapper } from './FilterField.styled';
 
 const FilterField = ({ contactFilter, onFilter }) => {
   return (
-    <div>
+    <Wrapper>
       <p>Find contact by name</p>
       <input
         type="text"
@@ -11,7 +12,7 @@ const FilterField = ({ contactFilter, onFilter }) => {
           onFilter(e.target.value);
         }}
       />
-    </div>
+    </Wrapper>
   );
 };
 
